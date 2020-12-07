@@ -81,46 +81,45 @@ d3.json(url).then(function (data) {
     var row7 = table.append('tr')
     var cell7 = row7.append('tr')
     cell7.text(`Washing Frequency: ${demgraphicWfreq}`)
+});
     //console.log(demgrphicWfreq)
 
-    //Static Gauge Plot
-
-    var dataGauge = {
-        type: "indicator",
-        mode: 'gauge+number',
-        value: demgraphicWfreq,
-        title: {
-            text: "Washing Frequency",
-            font: { size: 28 }
-        },
-        gauge: {
-            axis: {
-                range: [null, 9],
-                tickWidth: 1, tickcolor: "darkred",},
-            bar: { color: 'darkblue' },
-            bgcolor: 'white',
-            borderwidth: 2,
-            bodercolor: "#696969",
-            steps: [
-                { range: [0, 1], color: '#E0FFFF' },
-                { range: [1, 2], color: '#B0E0E6' },
-                { range: [2, 3], color: '#90EE90' },
-                { range: [3, 4], color: '#98FB98' },
-                { range: [4, 5], color: '#00FA9A' },
-                { range: [5, 6], color: '#00FF7F' },
-                { range: [6, 7], color: '#3CB371' },
-                { range: [7, 8], color: '#2E8B57' },
-                { range: [8, 9], color: '#006400' },
-                ]
-            },
-    var any = {
-        width: 500,
-        height: 400,
-        margin: { t: 25, r: 25, l: 25, b: 25 },
-        paper_bgcolor: 'white',
-        font: { color: '#696969', family: 'Times-Roman' },
-        },
-    Plotly.newPlot('gauge', dataGauge, layout),
-    }
-});
-
+//     //Static Gauge Plot
+//     var layout = {
+//         width: 500,
+//         height: 400,
+//         margin: { t: 25, r: 25, l: 25, b: 25 },
+//         paper_bgcolor: 'white',
+//         font: { color: '#696969', family: 'Times-Roman' },
+//     };
+//     var dataGauge = {
+//         type: "indicator",
+//         mode: 'gauge+number',
+//         value: demgraphicWfreq,
+//         title: {
+//             text: "Washing Frequency",
+//             font: { size: 28 },
+//             gauge: {
+//                 axis: {
+//                     range: [null, 9],
+//                     tickWidth: 1, tickcolor: "darkred",},
+//                 bar: { color: 'darkblue' },
+//                 bgcolor: 'white',
+//                 borderwidth: 2,
+//                 bodercolor: "#696969",
+//                 steps: [
+//                     { range: [0, 1], color: '#E0FFFF' },
+//                     { range: [1, 2], color: '#B0E0E6' },
+//                     { range: [2, 3], color: '#90EE90' },
+//                     { range: [3, 4], color: '#98FB98' },
+//                     { range: [4, 5], color: '#00FA9A' },
+//                     { range: [5, 6], color: '#00FF7F' },
+//                     { range: [6, 7], color: '#3CB371' },
+//                     { range: [7, 8], color: '#2E8B57' },
+//                     { range: [8, 9], color: '#006400' },
+//                 ],
+//             }
+//         },
+//     };
+//     Plotly.newPlot('gauge', dataGauge, layout),
+// });
