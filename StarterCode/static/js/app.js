@@ -1,12 +1,12 @@
-var url = 'samples.json'
+var url = 'samples.json';
 
 d3.json(url).then(function (data) {
     console.log(data);
-
+    
     var names = data.names;
-    names.forEach(d => {
-        d3.select('#selDataset').append('option').text(d).property('value', d);
-    })
+        names.forEach(d => {
+            d3.select('#selDataset').append('option').text(d).property('value', d);
+        });
 
     // Static Bar Chart
     var values = data.samples[0].sample_values.slice(0, 10).reverse()
@@ -28,7 +28,7 @@ d3.json(url).then(function (data) {
     var bubbleValues = data.samples[0].sample_values
     var bubbleIds = data.samples[0].otu_ids
     var bubbleLabels = data.samples[0].otu_labels
-    //console.log()
+    //console.log(bubbleLabels)
 
     var traceBubble = {
         x: bubbleIds,
@@ -39,12 +39,12 @@ d3.json(url).then(function (data) {
             size: bubbleValues,
             color: bubbleIds
         }
-    }
+    },
 
     var bubbleData = [traceBubble];
 
     Plotly.newPlot('bubble', bubbleData);
-})   
+
     var demographicsID = data.metadata[0].ids
     var demgraphicsEthn = data.metadata[0].ethnicity
     var demgraphicGen = data.metadata[0].gender
@@ -80,9 +80,9 @@ d3.json(url).then(function (data) {
 
     var row7 = table.append('tr')
     var cell7 = row7.append('tr')
-    cell7.text(`Washing Frequency: ${demgraphicWfreq}`),
-    //console.log(demgrphicWfreq)
-},
+    cell7.text(`Washing Frequency: ${demgraphicWfreq}`)
+    // //console.log(demgrphicWfreq)
+
     //Static Gauge Plot
     var layout = {
         width: 500,
@@ -90,7 +90,7 @@ d3.json(url).then(function (data) {
         margin: { t: 25, r: 25, l: 25, b: 25 },
         paper_bgcolor: 'white',
         font: { color: '#696969', family: 'Times-Roman' },
-    },
+    }
     var dataGauge = {
         type: "indicator",
         mode: 'gauge+number',
@@ -117,11 +117,13 @@ d3.json(url).then(function (data) {
                     { range: [6, 7], color: '#3CB371' },
                     { range: [7, 8], color: '#2E8B57' },
                     { range: [8, 9], color: '#006400' },
-                ],
-            },
-        },
+                ]
+            }
+        }
     },
-    var gaugeData = [layout],
 
-    Plotly.newPlot('gauge', dataGauge, gaugeData),
+    var gaugeData = [layout]
+
+    Plotly.newPlot('gauge', dataGauge, gaugeData)
 });
+
