@@ -1,12 +1,12 @@
-var url = 'samples.json';
+var temp = "../data/samples.json"
 
-d3.json(url).then(function (data) {
+d3.json(temp).then(function(data) {
     console.log(data);
-    
-    var names = data.names;
-        names.forEach(d => {
-            d3.select('#selDataset').append('option').text(d).property('value', d);
-        });
+
+    var name = data.names;
+    name.forEach(d => {
+        d3.select('#selDataset').append('option').text(d).property('value', d);
+    });
 
     // Static Bar Chart
     var values = data.samples[0].sample_values.slice(0, 10).reverse()
@@ -37,21 +37,21 @@ d3.json(url).then(function (data) {
         text: bubbleLabels,
         marker: {
             size: bubbleValues,
-            color: bubbleIds
+            color: bubbleIds,
         }
-    },
+    }
 
     var bubbleData = [traceBubble];
 
     Plotly.newPlot('bubble', bubbleData);
 
-    var demographicsID = data.metadata[0].ids
+    var demographicsID = data.metadata[0].id
     var demgraphicsEthn = data.metadata[0].ethnicity
     var demgraphicGen = data.metadata[0].gender
     var demgraphicAge = data.metadata[0].age
     var demgraphicLoc = data.metadata[0].location
-    var demgraphicBBtype = data.metadata[0].demgraphicBBtype
-    var demgraphicWfreq = data.metadata[0].demgraphicWfreq
+    var demgraphicBBtype = data.metadata[0].bbtype
+    var demgraphicWfreq = data.metadata[0].wfreq
 
     var table = d3.select('#sample-metadata')
     var row = table.append('tr')
@@ -83,47 +83,4 @@ d3.json(url).then(function (data) {
     cell7.text(`Washing Frequency: ${demgraphicWfreq}`)
     // //console.log(demgrphicWfreq)
 
-    //Static Gauge Plot
-    var layout = {
-        width: 500,
-        height: 400,
-        margin: { t: 25, r: 25, l: 25, b: 25 },
-        paper_bgcolor: 'white',
-        font: { color: '#696969', family: 'Times-Roman' },
-    }
-    var dataGauge = {
-        type: "indicator",
-        mode: 'gauge+number',
-        value: demgraphicWfreq,
-        title: {
-            text: "Washing Frequency",
-            font: { size: 28 },
-            gauge: {
-                axis: {
-                    range: [null, 9],
-                    tickWidth: 1, tickcolor: "darkred",
-                },
-                bar: { color: 'darkblue' },
-                bgcolor: 'white',
-                borderwidth: 2,
-                bodercolor: "#696969",
-                steps: [
-                    { range: [0, 1], color: '#E0FFFF' },
-                    { range: [1, 2], color: '#B0E0E6' },
-                    { range: [2, 3], color: '#90EE90' },
-                    { range: [3, 4], color: '#98FB98' },
-                    { range: [4, 5], color: '#00FA9A' },
-                    { range: [5, 6], color: '#00FF7F' },
-                    { range: [6, 7], color: '#3CB371' },
-                    { range: [7, 8], color: '#2E8B57' },
-                    { range: [8, 9], color: '#006400' },
-                ]
-            }
-        }
-    },
-
-    var gaugeData = [layout]
-
-    Plotly.newPlot('gauge', dataGauge, gaugeData)
-});
-
+})
